@@ -11,6 +11,17 @@ const FruitInfo: FC<{ data: FruitContract }> = ({ data }) => {
 	const [liked, setLiked] = useState<boolean>(data.is_favorite)
 	const { toggleFavorite, addToCart } = useAppContext()
 
+	const addToBasket = (data: FruitContract, qty: number) => {
+		showMessage({
+			message: `Added "${data.title}" to Basket`,
+			type: "success",
+			backgroundColor: `#fff`,
+			color: primaryColor,
+		})
+
+		addToCart(data, qty)
+	}
+
 	const toggleLiked = () => {
 		if (!liked) {
 			showMessage({
@@ -77,7 +88,7 @@ const FruitInfo: FC<{ data: FruitContract }> = ({ data }) => {
 				</TouchableOpacity>
 				<TouchableOpacity
 					style={{ backgroundColor: primaryColor, paddingVertical: 15, paddingHorizontal: 40, borderRadius: 10, justifyContent: `center`, alignItems: `center` }}
-					onPress={() => addToCart(data, qty)}>
+					onPress={() => addToBasket(data, qty)}>
 					<Text style={{ fontSize: 20, fontWeight: `600`, color: `#ffffff` }}>Add to basket</Text>
 				</TouchableOpacity>
 			</View>
