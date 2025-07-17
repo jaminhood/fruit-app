@@ -19,7 +19,10 @@ const Orders = () => {
 	const cardBottomSheetRef = useRef<BottomSheetModal>(null)
 
 	const toggleDeliveryAddressIsOpen = () => deliveryBottomSheetRef.current?.present(0)
-	const toggleCardInformationIsOpen = () => cardBottomSheetRef.current?.present(0)
+	const toggleCardInformationIsOpen = () => {
+		deliveryBottomSheetRef.current?.close()
+		cardBottomSheetRef.current?.present(0)
+	}
 
 	return (
 		<GestureHandlerRootView style={{ gap: 10, flex: 1 }}>

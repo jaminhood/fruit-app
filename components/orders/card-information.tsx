@@ -20,6 +20,7 @@ const CardInformation = forwardRef<any, {}>(({}, ref) => {
 		<BottomSheetModalProvider>
 			<BottomSheetModal
 				ref={ref}
+				enablePanDownToClose={false}
 				snapPoints={snapPoints}>
 				<BottomSheetView style={styles.sheet_view}>
 					<Text style={styles.title}>Card {`Holder's`} Name</Text>
